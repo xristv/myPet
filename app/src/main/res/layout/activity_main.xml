@@ -4,15 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     tools:context="gr.athtech.mypet.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/petAgeText"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintLeft_toRightOf="@+id/ageText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petBreedText" />
+
+    <ImageButton
+        android:id="@+id/prevButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/prevButtonDescr"
+        android:onClick="showPrevious"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/nextButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961"
+        app:srcCompat="@drawable/left_arrow" />
+
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/nextButtonDescr"
+        android:onClick="showNext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/prevButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961"
+        app:srcCompat="@drawable/right_arrow" />
+
+    <ImageView
+        android:id="@+id/petImage"
+        android:layout_width="0dp"
+        android:layout_height="218dp"
+        android:contentDescription="@string/petImageDescr"
+        android:scaleType="fitCenter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/petBreedText"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/petAgeText"
+        app:layout_constraintLeft_toRightOf="@+id/breedText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petNameText" />
+
+    <TextView
+        android:id="@+id/petNameText"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        app:layout_constraintBottom_toTopOf="@+id/petBreedText"
+        app:layout_constraintLeft_toRightOf="@+id/nameText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petImage" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:text="@string/nameText"
+        app:layout_constraintBottom_toTopOf="@+id/breedText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/petNameText"
+        app:layout_constraintTop_toBottomOf="@+id/petImage" />
+
+    <TextView
+        android:id="@+id/breedText"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:text="@string/breedText"
+        app:layout_constraintBottom_toTopOf="@+id/ageText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/petBreedText"
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+    <TextView
+        android:id="@+id/ageText"
+        android:layout_width="80dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:text="@string/ageText"
+        app:layout_constraintBottom_toTopOf="@+id/prevButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/petAgeText"
+        app:layout_constraintTop_toBottomOf="@+id/breedText" />
+
 
 </android.support.constraint.ConstraintLayout>

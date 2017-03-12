@@ -10,7 +10,11 @@ public class Cat extends Pet {
         super(name, breed, age);
     }
 
-    public String purr(){
+    public Cat(String name, String breed, int age, int image) {
+        super(name, breed, age, image);
+    }
+
+    public String purr() {
         return "Purr";
     }
 }

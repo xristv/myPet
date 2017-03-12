@@ -10,7 +10,11 @@ public class Dog extends Pet {
         super(name, breed, age);
     }
 
-    public String bark(){
+    public Dog(String name, String breed, int age, int image) {
+        super(name, breed, age, image);
+    }
+
+    public String bark() {
         return "Woof";
     }
 }

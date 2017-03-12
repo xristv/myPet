@@ -9,4 +9,8 @@ public class Lizard extends Pet {
     public Lizard(String name, String breed, int age) {
         super(name, breed, age);
     }
+
+    public Lizard(String name, String breed, int age, int image) {
+        super(name, breed, age, image);
+    }
 }
