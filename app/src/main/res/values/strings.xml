@@ -1,9 +1,20 @@
 <resources>
     <string name="app_name">MyPet</string>
-    <string name="nameText">Name:</string>
-    <string name="breedText">Breed:</string>
-    <string name="ageText">Age:</string>
+    <string name="petNameText">Name</string>
+    <string name="petInfoText">Breed, Age, Sex</string>
     <string name="petImageDescr">Pet image</string>
-    <string name="nextButtonDescr">Next pet</string>
-    <string name="prevButtonDescr">Previous pet</string>
+    <string name="colorText">Color</string>
+    <string name="petColorText">Pet color</string>
+    <string name="petigreeText">Petigree</string>
+    <string name="petPetigreeText">Pet petigree</string>
+    <string name="ownerText">Owner</string>
+    <string name="ownerName">Owner name</string>
+    <string name="ownerNumber">Owner number</string>
+    <string name="ownerAddress">Owner address</string>
+    <string name="vetText">Vet</string>
+    <string name="vetName">Vet name</string>
+    <string name="vetNumber">Vet number</string>
+    <string name="vetAddress">Vet address</string>
+    <string name="marksText">Special characteristics</string>
+    <string name="petMarksText">Pet marks</string>
 </resources>
