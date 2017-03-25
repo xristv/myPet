@@ -28,9 +28,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        counter=0;
+        counter = savedInstanceState != null ? savedInstanceState.getInt("counter") : 0;
         pets = getPets();
         showPet();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("counter", counter);
     }
 
     /**
@@ -42,44 +48,32 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         //set the image
-        ImageView imageView = (ImageView) findViewById(R.id.petImage);
-        imageView.setImageResource(pet.getImage());
+        ((ImageView) findViewById(R.id.petImage)).setImageResource(pet.getImage());
 
         //set name
-        TextView nameView = (TextView) findViewById(R.id.petNameText);
-        nameView.setText(pet.getName());
+        ((TextView) findViewById(R.id.petNameText)).setText(pet.getName());
 
         //set pet info
-        TextView petInfoText = (TextView) findViewById(R.id.petInfoText);
-        petInfoText.setText(pet.getBreed() + ", " + pet.getSex() + ", " + format.format(pet.getDateOfBirth()));
+        ((TextView) findViewById(R.id.petInfoText)).setText(pet.getBreed() + ", " + pet.getSex() + ", " + format.format(pet.getDateOfBirth()));
 
         //set color
-        TextView petColorText = (TextView) findViewById(R.id.petColorText);
-        petColorText.setText(pet.getColor());
+        ((TextView) findViewById(R.id.petColorText)).setText(pet.getColor());
 
         //set petigree
-        TextView petPetigreeText = (TextView) findViewById(R.id.petPetigreeText);
-        petPetigreeText.setText(pet.getPetigree());
+        ((TextView) findViewById(R.id.petPetigreeText)).setText(pet.getPetigree());
 
         //set marks
-        TextView petMarksText = (TextView) findViewById(R.id.petMarksText);
-        petMarksText.setText(pet.getDistinguishingMarks());
+        ((TextView) findViewById(R.id.petMarksText)).setText(pet.getDistinguishingMarks());
 
         //set owner
-        TextView ownerName = (TextView) findViewById(R.id.ownerName);
-        ownerName.setText(pet.getOwner().getFirstName() + " " + pet.getOwner().getLastName());
-        TextView ownerNumber = (TextView) findViewById(R.id.ownerNumber);
-        ownerNumber.setText(pet.getOwner().getPhoneNumber());
-        TextView ownerAddress = (TextView) findViewById(R.id.ownerAddress);
-        ownerAddress.setText(pet.getOwner().getAddress());
+        ((TextView) findViewById(R.id.ownerName)).setText(pet.getOwner().getFirstName() + " " + pet.getOwner().getLastName());
+        ((TextView) findViewById(R.id.ownerNumber)).setText(pet.getOwner().getPhoneNumber());
+        ((TextView) findViewById(R.id.ownerAddress)).setText(pet.getOwner().getAddress());
 
         //set vet
-        TextView vetName = (TextView) findViewById(R.id.vetName);
-        vetName.setText(pet.getVet().getFirstName() + " " + pet.getOwner().getLastName());
-        TextView vetNumber = (TextView) findViewById(R.id.vetNumber);
-        vetNumber.setText(pet.getVet().getPhoneNumber());
-        TextView vetAddress = (TextView) findViewById(R.id.vetAddress);
-        vetAddress.setText(pet.getVet().getAddress());
+        ((TextView) findViewById(R.id.vetName)).setText(pet.getVet().getFirstName() + " " + pet.getOwner().getLastName());
+        ((TextView) findViewById(R.id.vetNumber)).setText(pet.getVet().getPhoneNumber());
+        ((TextView) findViewById(R.id.vetAddress)).setText(pet.getVet().getAddress());
 
     }
 
