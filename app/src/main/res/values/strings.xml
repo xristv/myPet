@@ -17,4 +17,9 @@
     <string name="vetAddress">Vet address</string>
     <string name="marksText">Special characteristics</string>
     <string name="petMarksText">Pet marks</string>
+    <string name="noPetsText">No pets!</string>
+    <string name="exploreText">Explore</string>
+    <string name="dogsText">Dogs</string>
+    <string name="catsText">Cats</string>
+    <string name="otherText">Other</string>
 </resources>

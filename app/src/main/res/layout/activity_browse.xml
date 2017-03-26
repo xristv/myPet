@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+
+    <RelativeLayout
+        android:id="@+id/imageWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/petImage"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/petImageDescr"
+            android:scaleType="fitXY"
+            android:src="@drawable/komodo" />
+
+
+        <TextView
+            android:id="@+id/petNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/petInfoText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@color/colorPrimaryOpacity"
+            android:ems="10"
+            android:gravity="start"
+            android:paddingBottom="2dp"
+            android:paddingEnd="2dp"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:text="@string/petNameText"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/petInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/petNameText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:ems="10"
+            android:paddingBottom="2dp"
+            android:paddingEnd="2dp"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/petInfoText"
+            android:textColor="@android:color/background_light"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/infoWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@+id/imageWrapper"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/background_light">
+
+        <TextView
+            android:id="@+id/colorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colorText"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/petColorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/colorText"
+            android:layout_below="@+id/colorText"
+            android:text="@string/petColorText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/petigreeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="100dp"
+            android:text="@string/petigreeText"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/petPetigreeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/petigreeText"
+            android:layout_below="@+id/petigreeText"
+            android:text="@string/petPetigreeText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/ownerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/ownerText"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/ownerAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ownerNumber"
+            android:text="@string/ownerAddress"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ownerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ownerText"
+            android:layout_below="@+id/ownerText"
+            android:text="@string/ownerName"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ownerNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ownerName"
+            android:text="@string/ownerNumber"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ownerName"
+            android:layout_alignStart="@+id/petPetigreeText"
+            android:text="@string/vetText"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/vetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/vetText"
+            android:layout_below="@+id/vetText"
+            android:text="@string/vetName"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vetNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/vetText"
+            android:layout_below="@+id/vetName"
+            android:text="@string/vetNumber"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vetAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/vetNumber"
+            android:layout_below="@+id/vetNumber"
+            android:text="@string/vetAddress"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/marksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/petColorText"
+            android:layout_below="@+id/petColorText"
+            android:layout_marginTop="18dp"
+            android:text="@string/marksText"
+            android:textColor="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/petMarksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/marksText"
+            android:layout_below="@+id/marksText"
+            android:text="@string/petMarksText"
+            android:textSize="18sp" />
+
+
+        <ImageButton
+            android:id="@+id/dogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/colorText"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/left_arrow" />
+
+        <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/dogButton"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/right_arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/emptyWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/noPetsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/noPetsText"
+            android:textSize="24sp"
+            android:layout_marginTop="145dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

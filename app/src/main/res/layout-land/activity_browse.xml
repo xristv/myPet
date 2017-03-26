@@ -7,7 +7,7 @@
     android:background="@android:color/background_light">
 
     <LinearLayout
-        android:id="@+id/imageWrapper"
+        android:id="@+id/imageWrapperLand"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -23,7 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/infoWrapper"
+        android:id="@+id/infoWrapperLand"
         android:layout_width="193dp"
         android:layout_height="match_parent"
         android:layout_marginEnd="5dp"
@@ -100,7 +100,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/infoWrapper2"
+        android:id="@+id/infoWrapper2Land"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
@@ -173,7 +173,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/prevButton"
+                android:id="@+id/dogButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|left"
@@ -196,5 +196,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </LinearLayout>
