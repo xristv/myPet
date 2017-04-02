@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imageWrapper"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_alignParentTop="true">
+
+    <ImageView
+        android:id="@+id/petImage"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/petImageDescr"
+        android:scaleType="fitXY"
+        android:src="@drawable/komodo" />
+
+
+    <TextView
+        android:id="@+id/petName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/petBreed"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@color/colorPrimaryOpacity"
+        android:ems="10"
+        android:gravity="start"
+        android:paddingBottom="2dp"
+        android:paddingEnd="2dp"
+        android:paddingStart="5dp"
+        android:paddingTop="2dp"
+        android:text="@string/petNameText"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/petBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/petName"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimaryOpacity"
+        android:ems="10"
+        android:paddingBottom="2dp"
+        android:paddingEnd="2dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/petInfoText"
+        android:textColor="@android:color/background_light"
+        android:textSize="14sp" />
+</RelativeLayout>

@@ -1,150 +1,140 @@
 package gr.athtech.mypet;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import gr.athtech.mypet.model.Pet;
 
+import static gr.athtech.mypet.R.id.list_view;
+
+/**
+ * Browse a list of species
+ */
 public class BrowseActivity extends AppCompatActivity {
 
-    private int counter;
-    private PetService petService;
+    private ListView listView;
+    private GridView gridView;
+
     private List<Pet> pets;
+
+    private PetService petService;
+
+    private PetAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        petService = new PetService();
         setContentView(R.layout.activity_browse);
         setListeners();
 
+        //get a list of the selected species
+        petService = new PetService();
         Intent intent = getIntent();
         String species = intent != null ? intent.getStringExtra("species") : null;
-
-        counter = savedInstanceState != null ? savedInstanceState.getInt("counter") : 0;
         pets = petService.getPets(species);
 
-        if (!pets.isEmpty())
-            showPet();
-        else
+        if (pets.isEmpty())
             showEmpty();
+        else {
+            ((TextView) findViewById(R.id.speciesText)).setText(species);
+            adapter = new PetAdapter(this, pets);
+            showListView();
+        }
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("counter", counter);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_browse, menu);
+        return true;
     }
 
-    /**
-     * Show the pet information
-     */
-    private void showPet() {
-        Pet pet = pets.get(counter);
-
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-
-        //set the image
-        ((ImageView) findViewById(R.id.petImage)).setImageResource(pet.getImage());
-
-        //set name
-        ((TextView) findViewById(R.id.petNameText)).setText(pet.getName());
-
-        //set pet info
-        ((TextView) findViewById(R.id.petInfoText)).setText(pet.getBreed() + ", " + pet.getSex() + ", " + format.format(pet.getDateOfBirth()));
-
-        //set color
-        ((TextView) findViewById(R.id.petColorText)).setText(pet.getColor());
-
-        //set petigree
-        ((TextView) findViewById(R.id.petPetigreeText)).setText(pet.getPetigree());
-
-        //set marks
-        ((TextView) findViewById(R.id.petMarksText)).setText(pet.getDistinguishingMarks());
-
-        //set owner
-        ((TextView) findViewById(R.id.ownerName)).setText(pet.getOwner().getFirstName() + " " + pet.getOwner().getLastName());
-        ((TextView) findViewById(R.id.ownerNumber)).setText(pet.getOwner().getPhoneNumber());
-        ((TextView) findViewById(R.id.ownerAddress)).setText(pet.getOwner().getAddress());
-
-        //set vet
-        ((TextView) findViewById(R.id.vetName)).setText(pet.getVet().getFirstName() + " " + pet.getOwner().getLastName());
-        ((TextView) findViewById(R.id.vetNumber)).setText(pet.getVet().getPhoneNumber());
-        ((TextView) findViewById(R.id.vetAddress)).setText(pet.getVet().getAddress());
-
-    }
-
-    private void showEmpty() {
-        if (Configuration.ORIENTATION_PORTRAIT == getResources().getConfiguration().orientation) {
-            (this.findViewById(R.id.imageWrapper)).setVisibility(RelativeLayout.INVISIBLE);
-            (this.findViewById(R.id.infoWrapper)).setVisibility(RelativeLayout.INVISIBLE);
-            (this.findViewById(R.id.emptyWrapper)).setVisibility(RelativeLayout.VISIBLE);
-        } else {
-            (this.findViewById(R.id.imageWrapperLand)).setVisibility(LinearLayout.INVISIBLE);
-            (this.findViewById(R.id.infoWrapperLand)).setVisibility(LinearLayout.INVISIBLE);
-            (this.findViewById(R.id.infoWrapper2Land)).setVisibility(LinearLayout.INVISIBLE);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_list_view:
+                showListView();
+                return true;
+            case R.id.menu_item_grid_view:
+                showGridView();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
+    private void showListView() {
+        this.gridView.setAdapter(null);
+        this.gridView.setVisibility(View.GONE);
+        (this.findViewById(R.id.emptyText)).setVisibility(View.GONE);
+
+        this.listView.setAdapter(adapter);
+        this.listView.setVisibility(View.VISIBLE);
+        this.listView.setDivider(null);
+    }
+
+    private void showGridView() {
+        this.listView.setAdapter(null);
+        this.listView.setVisibility(View.GONE);
+        (this.findViewById(R.id.emptyText)).setVisibility(View.GONE);
+
+        adapter.setLayout(R.layout.item_pet_grid);
+        this.gridView.setAdapter(adapter);
+        this.gridView.setVisibility(View.VISIBLE);
+    }
+
     /**
-     * Setup the various app listeners
+     * Show a pet based on its name
+     *
+     * @param pet
+     */
+    private void showPet(Pet pet) {
+        Intent intent = new Intent(this, PetActivity.class);
+        intent.putExtra("pet", pet);
+        startActivity(intent);
+    }
+
+    /**
+     * Setup the various activity listeners
      */
     private void setListeners() {
 
-        final ImageButton prevButton = (ImageButton) findViewById(R.id.dogButton);
-        prevButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showPrevious(v);
+        listView = (ListView) findViewById(list_view);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pet pet = (Pet) parent.getAdapter().getItem(position);
+                showPet(pet);
             }
         });
 
-        final ImageButton nextButton = (ImageButton) findViewById(R.id.nextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showNext(v);
+        gridView = (GridView) findViewById(R.id.grid_view);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pet pet = (Pet) parent.getAdapter().getItem(position);
+                showPet(pet);
             }
         });
     }
 
-    /**
-     * Show the previous pet on the list
-     *
-     * @param view
-     */
-    public void showPrevious(View view) {
-        if (counter == 0) {
-            counter = pets.size() - 1;
-            Toast.makeText(this, "End of list!", Toast.LENGTH_SHORT).show();
-        } else {
-            counter--;
-        }
-        showPet();
+
+    private void showEmpty() {
+        (this.findViewById(R.id.grid_view)).setVisibility(View.GONE);
+        (this.findViewById(list_view)).setVisibility(View.GONE);
+        (this.findViewById(R.id.speciesText)).setVisibility(View.GONE);
+        (this.findViewById(R.id.emptyText)).setVisibility(View.VISIBLE);
     }
 
-    /**
-     * Show the next pet on the list
-     *
-     * @param view
-     */
-    public void showNext(View view) {
-        if (counter == pets.size() - 1) {
-            counter = 0;
-            Toast.makeText(this, "Start of list!", Toast.LENGTH_SHORT).show();
-        } else {
-            counter++;
-        }
-        showPet();
-    }
 }

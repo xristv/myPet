@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Setup the various app listeners
+     * Setup the various activity listeners
      */
     private void setListeners() {
 

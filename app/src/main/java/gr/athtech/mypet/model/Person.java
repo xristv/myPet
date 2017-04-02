@@ -1,15 +1,18 @@
 package gr.athtech.mypet.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by xrist on 18/3/2017.
  */
 
-public class Person {
+public class Person implements Parcelable {
 
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String phoneNumber;
+    protected String firstName;
+    protected String lastName;
+    protected String address;
+    protected String phoneNumber;
 
     public Person() {
     }
@@ -57,4 +60,36 @@ public class Person {
     public String toString() {
         return firstName + " " + lastName + ", Tel: " + phoneNumber + ", Addr: " + address;
     }
+
+    protected Person(Parcel in) {
+        firstName = in.readString();
+        lastName = in.readString();
+        address = in.readString();
+        phoneNumber = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(address);
+        dest.writeString(phoneNumber);
+    }
+
+    public static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
+        @Override
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
+        }
+
+        @Override
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
 }

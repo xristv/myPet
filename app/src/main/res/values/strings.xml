@@ -5,6 +5,7 @@
     <string name="petImageDescr">Pet image</string>
     <string name="colorText">Color</string>
     <string name="petColorText">Pet color</string>
+    <string name="breedText">Breed</string>
     <string name="petigreeText">Petigree</string>
     <string name="petPetigreeText">Pet petigree</string>
     <string name="ownerText">Owner</string>
@@ -17,9 +18,13 @@
     <string name="vetAddress">Vet address</string>
     <string name="marksText">Special characteristics</string>
     <string name="petMarksText">Pet marks</string>
-    <string name="noPetsText">No pets!</string>
+    <string name="noPetText">No pet to show!</string>
+    <string name="noPetsText">No pets to show!</string>
     <string name="exploreText">Explore</string>
     <string name="dogsText">Dogs</string>
     <string name="catsText">Cats</string>
     <string name="otherText">Other</string>
+    <string name="menuList">List</string>
+    <string name="menuGrid">Grid</string>
+    <string name="speciesText">Species</string>
 </resources>

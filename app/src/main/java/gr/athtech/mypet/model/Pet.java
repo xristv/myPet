@@ -1,5 +1,8 @@
 package gr.athtech.mypet.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
@@ -8,7 +11,7 @@ import java.util.Date;
  * Created by xrist on 9/3/2017.
  */
 
-public class Pet {
+public class Pet implements Parcelable {
 
     private String name;
     private Date dateOfBirth;
@@ -122,4 +125,49 @@ public class Pet {
     public void setVet(Vet vet) {
         this.vet = vet;
     }
+
+    protected Pet(Parcel in) {
+        name = in.readString();
+        long tmpDateOfBirth = in.readLong();
+        dateOfBirth = tmpDateOfBirth != -1 ? new Date(tmpDateOfBirth) : null;
+        sex = in.readString();
+        breed = in.readString();
+        color = in.readString();
+        distinguishingMarks = in.readString();
+        petigree = in.readString();
+        image = in.readInt();
+        owner = (Owner) in.readValue(Owner.class.getClassLoader());
+        vet = (Vet) in.readValue(Vet.class.getClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeLong(dateOfBirth != null ? dateOfBirth.getTime() : -1L);
+        dest.writeString(sex);
+        dest.writeString(breed);
+        dest.writeString(color);
+        dest.writeString(distinguishingMarks);
+        dest.writeString(petigree);
+        dest.writeInt(image);
+        dest.writeValue(owner);
+        dest.writeValue(vet);
+    }
+
+    public static final Parcelable.Creator<Pet> CREATOR = new Parcelable.Creator<Pet>() {
+        @Override
+        public Pet createFromParcel(Parcel in) {
+            return new Pet(in);
+        }
+
+        @Override
+        public Pet[] newArray(int size) {
+            return new Pet[size];
+        }
+    };
 }
