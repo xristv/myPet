@@ -32,12 +32,12 @@
         android:clipChildren="true"
         android:columnWidth="150dp"
         android:gravity="center_horizontal"
-        android:horizontalSpacing="2dp"
+        android:horizontalSpacing="5dp"
         android:numColumns="auto_fit"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
+        android:paddingEnd="2dp"
+        android:paddingStart="2dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="2dp" />
+        android:verticalSpacing="5dp" />
 
     <TextView
         android:id="@+id/emptyText"

@@ -87,22 +87,22 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/petigreeText"
+            android:id="@+id/chipIDText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="100dp"
-            android:text="@string/petigreeText"
+            android:text="@string/chipIDText"
             android:textColor="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/petPetigreeText"
+            android:id="@+id/petChipIDText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/petigreeText"
-            android:layout_below="@+id/petigreeText"
-            android:text="@string/petPetigreeText"
+            android:layout_alignStart="@+id/chipIDText"
+            android:layout_below="@+id/chipIDText"
+            android:text="@string/petChipIDText"
             android:textSize="18sp" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/ownerName"
-            android:layout_alignStart="@+id/petPetigreeText"
+            android:layout_alignStart="@+id/petChipIDText"
             android:text="@string/vetText"
             android:textColor="@android:color/darker_gray" />
 

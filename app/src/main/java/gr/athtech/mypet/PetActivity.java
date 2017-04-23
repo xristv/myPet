@@ -51,19 +51,19 @@ public class PetActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         //set the image
-        ((ImageView) findViewById(R.id.petImage)).setImageResource(pet.getImage());
+        ((ImageView) findViewById(R.id.petImage)).setImageResource(pet.getImageUri());
 
         //set name
         ((TextView) findViewById(R.id.petNameText)).setText(pet.getName());
 
         //set pet info
-        ((TextView) findViewById(R.id.petInfoText)).setText(pet.getBreed() + ", " + pet.getSex() + ", " + format.format(pet.getDateOfBirth()));
+        ((TextView) findViewById(R.id.petInfoText)).setText(pet.getBreed() + ", " + pet.getGender() + ", " + format.format(pet.getDateOfBirth()));
 
         //set color
         ((TextView) findViewById(R.id.petColorText)).setText(pet.getColor());
 
-        //set petigree
-        ((TextView) findViewById(R.id.petPetigreeText)).setText(pet.getPetigree());
+        //set chipId
+        ((TextView) findViewById(R.id.petChipIDText)).setText(pet.getChipID());
 
         //set marks
         ((TextView) findViewById(R.id.petMarksText)).setText(pet.getDistinguishingMarks());

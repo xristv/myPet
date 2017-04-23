@@ -13,6 +13,7 @@ public class Person implements Parcelable {
     protected String lastName;
     protected String address;
     protected String phoneNumber;
+    protected String type;
 
     public Person() {
     }
@@ -22,6 +23,7 @@ public class Person implements Parcelable {
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.type=this.getType();
     }
 
     public String getFirstName() {
@@ -54,6 +56,14 @@ public class Person implements Parcelable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

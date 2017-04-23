@@ -12,9 +12,11 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.util.List;
 
 import gr.athtech.mypet.model.Pet;
+import gr.athtech.mypet.repository.PetRepository;
 
 import static gr.athtech.mypet.R.id.list_view;
 
@@ -28,7 +30,7 @@ public class BrowseActivity extends AppCompatActivity {
 
     private List<Pet> pets;
 
-    private PetService petService;
+    private PetRepository petRepository;
 
     private PetAdapter adapter;
 
@@ -39,10 +41,14 @@ public class BrowseActivity extends AppCompatActivity {
         setListeners();
 
         //get a list of the selected species
-        petService = new PetService();
+        petRepository = new PetRepository(this);
         Intent intent = getIntent();
         String species = intent != null ? intent.getStringExtra("species") : null;
-        pets = petService.getPets(species);
+        try {
+            pets = petRepository.getPets(species);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         if (pets.isEmpty())
             showEmpty();

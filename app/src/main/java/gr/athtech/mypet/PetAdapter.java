@@ -57,7 +57,7 @@ public class PetAdapter extends BaseAdapter {
 
         nameText.setText(pet.getName());
         breedText.setText(pet.getBreed());
-        imageView.setImageResource(pet.getImage());
+        imageView.setImageResource(pet.getImageUri());
 
         return convertView;
     }

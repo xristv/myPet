@@ -8,11 +8,16 @@ import java.util.Date;
 
 public class Cat extends Pet {
 
-    public Cat(String name, Date dateOfBirth, String sex, String breed, String color, String distinguishingMarks, String petigree, int image, Owner owner, Vet vet) {
-        super(name, dateOfBirth, sex, breed, color, distinguishingMarks, petigree, image, owner, vet);
+    public Cat(String name, Date dateOfBirth, String sex, String breed, String color, String distinguishingMarks, String chipId, int image, Owner owner, Vet vet) {
+        super(name, dateOfBirth, sex, breed, color, distinguishingMarks, chipId, image, owner, vet);
     }
 
     public String purr() {
         return "Purr";
+    }
+
+    @Override
+    public String getSpecies() {
+        return "cat";
     }
 }

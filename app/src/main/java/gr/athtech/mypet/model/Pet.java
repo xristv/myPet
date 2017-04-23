@@ -15,35 +15,51 @@ public class Pet implements Parcelable {
 
     private String name;
     private Date dateOfBirth;
-    private String sex;
+    private String gender;
     private String breed;
     private String color;
     private String distinguishingMarks;
-    private String petigree;
-    private int image;
+    private String chipID;
+    private String species;
+    private String comments;
+    private int imageUri;
     private Owner owner;
     private Vet vet;
 
     public Pet() {
     }
 
-    public Pet(String name, String breed, int image) {
+    public Pet(String name, String breed, int imageUri) {
         this.name = name;
         this.breed = breed;
-        this.image = image;
+        this.imageUri = imageUri;
     }
 
-    public Pet(String name, Date dateOfBirth, String sex, String breed, String color, String distinguishingMarks, String petigree, int image, Owner owner, Vet vet) {
+    public Pet(String name, Date dateOfBirth, String gender, String breed, String color, String distinguishingMarks, String chipID, int imageUri, Owner owner, Vet vet) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.sex = sex;
+        this.gender = gender;
         this.breed = breed;
         this.color = color;
         this.distinguishingMarks = distinguishingMarks;
-        this.petigree = petigree;
-        this.image = image;
+        this.chipID = chipID;
+        this.species = this.getSpecies();
+        this.imageUri = imageUri;
         this.owner = owner;
         this.vet = vet;
+    }
+
+    public Pet(String name, Date dateOfBirth, String gender, String breed, String color, String distinguishingMarks, String chipID, String species, String comments, int imageUri) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.breed = breed;
+        this.color = color;
+        this.distinguishingMarks = distinguishingMarks;
+        this.chipID = chipID;
+        this.species = species;
+        this.comments = comments;
+        this.imageUri = imageUri;
     }
 
     public String getName() {
@@ -70,12 +86,12 @@ public class Pet implements Parcelable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getColor() {
@@ -94,20 +110,36 @@ public class Pet implements Parcelable {
         this.distinguishingMarks = distinguishingMarks;
     }
 
-    public String getPetigree() {
-        return petigree;
+    public String getChipID() {
+        return chipID;
     }
 
-    public void setPetigree(String petigree) {
-        this.petigree = petigree;
+    public void setChipID(String chipID) {
+        this.chipID = chipID;
     }
 
-    public int getImage() {
-        return image;
+    public int getImageUri() {
+        return imageUri;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImageUri(int imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     public Owner getOwner() {
@@ -130,12 +162,12 @@ public class Pet implements Parcelable {
         name = in.readString();
         long tmpDateOfBirth = in.readLong();
         dateOfBirth = tmpDateOfBirth != -1 ? new Date(tmpDateOfBirth) : null;
-        sex = in.readString();
+        gender = in.readString();
         breed = in.readString();
         color = in.readString();
         distinguishingMarks = in.readString();
-        petigree = in.readString();
-        image = in.readInt();
+        chipID = in.readString();
+        imageUri = in.readInt();
         owner = (Owner) in.readValue(Owner.class.getClassLoader());
         vet = (Vet) in.readValue(Vet.class.getClassLoader());
     }
@@ -149,12 +181,12 @@ public class Pet implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeLong(dateOfBirth != null ? dateOfBirth.getTime() : -1L);
-        dest.writeString(sex);
+        dest.writeString(gender);
         dest.writeString(breed);
         dest.writeString(color);
         dest.writeString(distinguishingMarks);
-        dest.writeString(petigree);
-        dest.writeInt(image);
+        dest.writeString(chipID);
+        dest.writeInt(imageUri);
         dest.writeValue(owner);
         dest.writeValue(vet);
     }

@@ -6,8 +6,8 @@
     <string name="colorText">Color</string>
     <string name="petColorText">Pet color</string>
     <string name="breedText">Breed</string>
-    <string name="petigreeText">Petigree</string>
-    <string name="petPetigreeText">Pet petigree</string>
+    <string name="chipIDText">Chip ID</string>
+    <string name="petChipIDText">Chip ID</string>
     <string name="ownerText">Owner</string>
     <string name="ownerName">Owner name</string>
     <string name="ownerNumber">Owner number</string>

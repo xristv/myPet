@@ -1,10 +1,11 @@
-package gr.athtech.mypet;
+package gr.athtech.mypet.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import gr.athtech.mypet.R;
 import gr.athtech.mypet.model.Cat;
 import gr.athtech.mypet.model.Dog;
 import gr.athtech.mypet.model.Owner;
@@ -19,13 +20,13 @@ public class PetService {
         List<Pet> pets = new ArrayList<>();
 
         switch (species) {
-            case "Dogs":
+            case "dog":
                 getDogs(pets);
                 break;
-            case "Cats":
+            case "cat":
                 getCats(pets);
                 break;
-            case "Other":
+            case "other":
                 getOther(pets);
                 break;
             default:

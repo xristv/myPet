@@ -16,6 +16,11 @@ public class Owner extends Person {
         super(firstName, lastName, address, phoneNumber);
     }
 
+    @Override
+    public String getType() {
+        return "owner";
+    }
+
     protected Owner(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();

@@ -16,6 +16,11 @@ public class Vet extends Person {
         super(firstName, lastName, address, phoneNumber);
     }
 
+    @Override
+    public String getType() {
+        return "vet";
+    }
+
     protected Vet(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
