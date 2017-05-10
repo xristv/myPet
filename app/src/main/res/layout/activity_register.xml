@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/usernameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="@string/usernameText"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColorLink="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/usernameText"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/passwordText"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColorLink="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/firstNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/passwordText"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/firstNameText"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColorLink="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/lastNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/firstNameText"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/lastNameText"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColorLink="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/lastNameText"
+            android:layout_marginEnd="9dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/registerText" />
+
+    </RelativeLayout>
+</LinearLayout>

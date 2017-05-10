@@ -27,4 +27,10 @@
     <string name="menuList">List</string>
     <string name="menuGrid">Grid</string>
     <string name="speciesText">Species</string>
+    <string name="usernameText">Username</string>
+    <string name="passwordText">Password</string>
+    <string name="firstNameText">First name</string>
+    <string name="lastNameText">Last name</string>
+    <string name="loginText">Login</string>
+    <string name="registerText">Register</string>
 </resources>
