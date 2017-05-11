@@ -14,11 +14,12 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import gr.athtech.mypet.LoginActivity;
 import gr.athtech.mypet.model.User;
 
 /**
  * Created by xrist on 10/5/2017.
- * Heavily based on trumpets code.
+ * Heavily based on trumpets' code.
  */
 
 public class UserService extends IntentService {
@@ -26,8 +27,8 @@ public class UserService extends IntentService {
 
     public static final String ACTION_CREATE_USER = "create_user";
     public static final String ACTION_GET_USERS = "get_user";
-    public static final String ACTION_CREATE_STUDENTS_RESULT = "create_user_result";
-    public static final String ACTION_GET_STUDENTS_RESULT = "get_user_result";
+    public static final String ACTION_CREATE_USER_RESULT = "create_user_result";
+    public static final String ACTION_GET_USER_RESULT = "get_user_result";
 
     private static final String GET_USER_URL = "http://hodor.ait.gr:8080/myPets/api/user/";
     private static final String CREATE_USER_URL = "http://hodor.ait.gr:8080/myPets/api/user/";
@@ -79,11 +80,15 @@ public class UserService extends IntentService {
             conn.connect();
 
             int response = conn.getResponseCode();
+            Intent resultIntent = new Intent(ACTION_CREATE_USER_RESULT);
 
-          /*  Intent resultIntent = new Intent(ACTION_CREATE_STUDENT_RESULT);
-            resultIntent.putExtra(EXTRA_CREATE_STUDENT_RESULT, "");
-*/
-        //    LocalBroadcastManager.getInstance(this).sendBroadcast(resultIntent);
+            if (response == 200) {
+                resultIntent.putExtra("created", true);
+            } else {
+                resultIntent.putExtra("response", false);
+            }
+
+            LocalBroadcastManager.getInstance(this).sendBroadcast(resultIntent);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,12 +109,15 @@ public class UserService extends IntentService {
             conn.connect();
 
             int response = conn.getResponseCode();
-            is = conn.getInputStream();
+            Intent resultIntent = new Intent(ACTION_GET_USER_RESULT, LoginActivity.class);
 
-            String result = convertStreamToString(is);
-
-            Intent resultIntent = new Intent(ACTION_GET_STUDENTS_RESULT);
-            resultIntent.putExtra("user", result);
+            if (response == 200) {
+                is = conn.getInputStream();
+                String result = convertStreamToString(is);
+                resultIntent.putExtra("user", result);
+            } else {
+                resultIntent.putExtra("user", "");
+            }
 
             LocalBroadcastManager.getInstance(this).sendBroadcast(resultIntent);
         } catch (Exception e) {

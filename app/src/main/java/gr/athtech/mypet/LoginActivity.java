@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -38,11 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserService.class);
-                intent.setAction(UserService.ACTION_GET_USERS);
-                intent.putExtra("username", ((EditText) findViewById(R.id.usernameText)).getText());
-                intent.putExtra("password", ((EditText) findViewById(R.id.passwordText)).getText());
-                startService(intent);
+                login();
             }
         });
 
@@ -55,20 +52,25 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void login() {
+        Intent intent = new Intent(this, UserService.class);
+        intent.setAction(UserService.ACTION_GET_USERS);
+        intent.putExtra("username", ((EditText) findViewById(R.id.usernameText)).getText().toString());
+        intent.putExtra("password", ((EditText) findViewById(R.id.passwordText)).getText().toString());
+        startService(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-
         LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
-
-        IntentFilter getUserResultIntentFilter = new IntentFilter(UserService.ACTION_GET_STUDENTS_RESULT);
+        IntentFilter getUserResultIntentFilter = new IntentFilter(UserService.ACTION_CREATE_USER_RESULT);
         broadcastManager.registerReceiver(getUserBroadcastReceiver, getUserResultIntentFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
         LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         broadcastManager.unregisterReceiver(getUserBroadcastReceiver);
     }
@@ -76,17 +78,20 @@ public class LoginActivity extends AppCompatActivity {
     private BroadcastReceiver getUserBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String userResults = intent.getStringExtra("user");
-
-            User user = new Gson().fromJson(userResults, User.class);
-            saveSharedPreferences(user);
+            afterLogin(intent.getStringExtra("userResult"));
         }
     };
 
-    private void saveSharedPreferences(User user) {
-        SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", user.getUsername());
-        editor.apply();
+    private void afterLogin(String userResult) {
+        if (!userResult.isEmpty()) {
+            User user = new Gson().fromJson(userResult, User.class);
+            SharedPreferences sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("username", user.getUsername());
+            editor.apply();
+        } else {
+            Toast.makeText(this, "Username and password are not correct!", Toast.LENGTH_LONG).show();
+        }
+
     }
 }
