@@ -14,7 +14,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import gr.athtech.mypet.LoginActivity;
 import gr.athtech.mypet.model.User;
 
 /**
@@ -109,7 +108,7 @@ public class UserService extends IntentService {
             conn.connect();
 
             int response = conn.getResponseCode();
-            Intent resultIntent = new Intent(ACTION_GET_USER_RESULT, LoginActivity.class);
+            Intent resultIntent = new Intent(ACTION_GET_USER_RESULT);
 
             if (response == 200) {
                 is = conn.getInputStream();
