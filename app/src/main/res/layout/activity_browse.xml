@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/petlist_fragment"
+    class="gr.athtech.mypet.fragment.PetListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context="gr.athtech.mypet.BrowseActivity">
-
-    <TextView
-        android:id="@+id/speciesText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp"
-        android:paddingTop="10dp"
-        android:text="@string/speciesText"
-        android:textSize="20sp" />
-
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <GridView
-        android:id="@+id/grid_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipChildren="true"
-        android:columnWidth="150dp"
-        android:gravity="center_horizontal"
-        android:horizontalSpacing="5dp"
-        android:numColumns="auto_fit"
-        android:paddingEnd="2dp"
-        android:paddingStart="2dp"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp" />
-
-    <TextView
-        android:id="@+id/emptyText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/noPetsText"
-        android:textSize="24sp"
-        android:visibility="gone" />
-</LinearLayout>
+    android:layout_height="match_parent" />
