@@ -57,7 +57,7 @@ public class PetRepository {
         dbHelper = new PetManagementDbHelper(context);
     }
 
-    private Long insertPet(Pet pet) {
+    public Long insertPet(Pet pet) {
         ContentValues values = new ContentValues();
         values.put(PetManagementContract.Pet.COLUMN_NAME_NAME, pet.getName());
         values.put(PetManagementContract.Pet.COLUMN_NAME_DATE_OF_BIRTH, pet.getDateOfBirth().getTime());
@@ -164,6 +164,11 @@ public class PetRepository {
         String[] whereArgs = {species.toLowerCase()};
 
         return getPets(whereClause, whereArgs);
+    }
+
+    public void deletePet(String name) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        db.delete(PetManagementContract.Pet.TABLE_NAME, PetManagementContract.Pet.COLUMN_NAME_NAME + "='" + name+"'", null);
     }
 
     public int countPets() {

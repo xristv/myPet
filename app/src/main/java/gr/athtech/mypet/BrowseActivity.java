@@ -2,7 +2,6 @@ package gr.athtech.mypet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import gr.athtech.mypet.fragment.PetListFragment;
 import gr.athtech.mypet.model.Pet;
@@ -10,7 +9,7 @@ import gr.athtech.mypet.model.Pet;
 /**
  * Browse a list of species
  */
-public class BrowseActivity extends AppCompatActivity implements PetListFragment.OnFragmentInteractionListener {
+public class BrowseActivity extends BaseActivity implements PetListFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

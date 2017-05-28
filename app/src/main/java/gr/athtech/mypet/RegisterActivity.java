@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import gr.athtech.mypet.service.UserService;
-
 /**
  * Created by xrist on 9/5/2017.
  */
@@ -31,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.setAction(UserService.ACTION_CREATE_USER);
+               // intent.setAction(UserService.ACTION_CREATE_USER);
                 intent.putExtra("username", ((EditText) findViewById(R.id.usernameText)).getText());
                 intent.putExtra("password", ((EditText) findViewById(R.id.passwordText)).getText());
                 intent.putExtra("firstName", ((EditText) findViewById(R.id.firstNameText)).getText());

@@ -2,17 +2,16 @@ package gr.athtech.mypet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import gr.athtech.mypet.fragment.PetSpeciesFragment;
 
-public class MainActivity extends AppCompatActivity implements PetSpeciesFragment.OnFragmentInteractionListener {
-
+public class MainActivity extends BaseActivity implements PetSpeciesFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loggedIn = isLoggedIn();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -29,4 +28,5 @@ public class MainActivity extends AppCompatActivity implements PetSpeciesFragmen
         intent.putExtra("species", species);
         startActivity(intent);
     }
+
 }

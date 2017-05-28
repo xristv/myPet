@@ -18,6 +18,6 @@ public class Dog extends Pet {
 
     @Override
     public String getSpecies() {
-        return "dog";
+        return "default_dog";
     }
 }

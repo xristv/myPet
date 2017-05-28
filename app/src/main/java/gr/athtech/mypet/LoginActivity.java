@@ -1,12 +1,9 @@
 package gr.athtech.mypet;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -54,33 +51,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login() {
         Intent intent = new Intent(this, UserService.class);
-        intent.setAction(UserService.ACTION_GET_USERS);
+       // intent.setAction(UserService.ACTION_GET_USERS);
         intent.putExtra("username", ((EditText) findViewById(R.id.usernameText)).getText().toString());
         intent.putExtra("password", ((EditText) findViewById(R.id.passwordText)).getText().toString());
         startService(intent);
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
-        IntentFilter getUserResultIntentFilter = new IntentFilter(UserService.ACTION_CREATE_USER_RESULT);
-        broadcastManager.registerReceiver(getUserBroadcastReceiver, getUserResultIntentFilter);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
-        broadcastManager.unregisterReceiver(getUserBroadcastReceiver);
-    }
-
-    private BroadcastReceiver getUserBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            afterLogin(intent.getStringExtra("userResult"));
-        }
-    };
 
     private void afterLogin(String userResult) {
         if (!userResult.isEmpty()) {

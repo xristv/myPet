@@ -23,11 +23,7 @@
         <activity android:name=".BrowseActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
-
-        <service
-            android:name=".service.UserService"
-            android:enabled="true"
-            android:exported="false" />
+        <activity android:name=".PetFormActivity"></activity>
     </application>
 
 </manifest>

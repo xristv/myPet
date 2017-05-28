@@ -3,7 +3,7 @@ package gr.athtech.mypet;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -12,11 +12,12 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 
 import gr.athtech.mypet.model.Pet;
+import gr.athtech.mypet.repository.PetRepository;
 
 /**
  * Show one pet
  */
-public class PetActivity extends AppCompatActivity {
+public class PetActivity extends BaseActivity {
 
     Pet pet;
 
@@ -24,6 +25,7 @@ public class PetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
+        petRepository = new PetRepository(this);
 
         Intent intent = getIntent();
 
@@ -32,9 +34,11 @@ public class PetActivity extends AppCompatActivity {
         else
             pet = intent.getParcelableExtra("pet");
 
-        if (pet != null)
+        if (pet != null) {
             showPet(pet);
-        else
+            this.setPet(pet);
+            this.setSpecies(pet.getSpecies());
+        } else
             showEmpty();
     }
 
@@ -42,6 +46,17 @@ public class PetActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelable("pet", pet);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        if (loggedIn) {
+            menu.findItem(R.id.login).setVisible(false);
+        } else {
+            menu.findItem(R.id.logout).setVisible(false);
+        }
+        return true;
     }
 
     /**

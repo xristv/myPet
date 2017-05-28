@@ -67,7 +67,7 @@ public class PetSpeciesFragment extends Fragment {
         final Button dogsButton = (Button) getActivity().findViewById(R.id.dogsButton);
         dogsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mListener.onSpeciesSelected("dog");
+                mListener.onSpeciesSelected("default_dog");
             }
         });
 

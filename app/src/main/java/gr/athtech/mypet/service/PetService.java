@@ -20,7 +20,7 @@ public class PetService {
         List<Pet> pets = new ArrayList<>();
 
         switch (species) {
-            case "dog":
+            case "default_dog":
                 getDogs(pets);
                 break;
             case "cat":

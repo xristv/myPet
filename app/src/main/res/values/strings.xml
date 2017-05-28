@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyPet</string>
+    <string name="app_name">Sharky</string>
     <string name="petNameText">Name</string>
     <string name="petInfoText">Breed, Age, Sex</string>
     <string name="petImageDescr">Pet image</string>

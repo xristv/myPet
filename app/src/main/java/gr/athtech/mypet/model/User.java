@@ -1,14 +1,20 @@
 package gr.athtech.mypet.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by xrist on 10/5/2017.
  */
 
 public class User {
 
+    @SerializedName("userName")
     private String username;
+    @SerializedName("password")
     private String password;
+    @SerializedName("firstName")
     private String firstName;
+    @SerializedName("lastName")
     private String lastName;
 
     public User() {
